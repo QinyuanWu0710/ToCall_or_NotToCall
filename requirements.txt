@@ -1,0 +1,32 @@
+# Core runtime dependencies for src/main.py and the tool-calling harnesses.
+# Versions are pinned from /NS/venvs/work/qwu/tool_py311 where available.
+
+fastmcp==3.1.0
+httpx==0.28.1
+Jinja2==3.1.6
+mcp==1.26.0
+openai==2.24.0
+pandas==3.0.1
+tqdm==4.67.3
+vllm==0.16.0
+
+# vLLM/model stack used by the cluster environment.
+accelerate==1.13.0
+datasets==4.8.4
+flashinfer-python==0.6.3
+numpy==2.2.6
+ray==2.54.0
+sentencepiece==0.2.1
+torch==2.9.1
+transformers==4.57.6
+triton==3.5.1
+
+# Analysis and plotting scripts under analyse/ and entity_data_construction/.
+matplotlib==3.10.8
+matplotlib-venn
+plotly==6.6.0
+requests==2.32.5
+scikit-learn==1.8.0
+scipy==1.17.1
+seaborn==0.13.2
+xgboost==3.2.0

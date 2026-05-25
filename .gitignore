@@ -1,0 +1,54 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+/NS/chatgpt/work/qwu/Tool_Call_Code/analyse/old_code/
+
+# Virtual environments and local package state
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+build/
+dist/
+
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Runtime logs, Slurm outputs, and caches
+logging/
+logs/
+.cache/
+*.log
+*.out
+*.err
+slurm-*.out
+slurm-*.err
+
+# Experiment outputs
+results/
+outputs/
+*.jsonl
+*_summary.csv
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project-specific local notes and generated/intermediate data
+_note/
+data/InvivoQuery.csv
+data/InvivoQuery.csv.bak
