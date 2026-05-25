@@ -282,31 +282,27 @@ Results are saved as JSONL, one object per example:
 
 ```json
 {
-  "entity": "Albert Einstein",
-  "query": "In a paragraph, could you tell me what you know about Albert Einstein?",
-  "response": "Albert Einstein was a theoretical physicist...",
-  "model": "Qwen/Qwen3-4B",
-  "tool_calls": [
-    {
-      "type": "tool_selection",
-      "decision": {
-        "needs_tool": true,
-        "tool_name": "web_search",
-        "tool_input": "Albert Einstein biography",
-        "reasoning": "Need factual grounding."
-      }
-    },
-    {
-      "type": "tool_execution",
-      "tool_name": "web_search",
-      "tool_input": "Albert Einstein biography",
-      "result": "..."
-    }
-  ],
-  "iterations": 3,
-  "tokens_generated": 312,
-  "web_search_enabled": true
-}
+  "entity": "hockey sur glace", 
+  "query": "In a paragraph, could you tell me what you know about hockey sur glace?", 
+  "tool_in_prompt_info": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2024-06\nCurrent date: 2026-04-14\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>user<|message|>You are an intelligent agent that decides when to use tools to answer questions.\n\nYou have access to the following tools:\n- web_search: Search the web for current information about entities, facts, or topics. Use this when you need up-to-date or factual information you don't have.\n\nGiven the user's question: \"In a paragraph, could you tell me what you know about hockey sur glace?\"\n\nDecide if you need to use any tools. Respond with a JSON object:\n{{\n    \"needs_tool\": true/false,\n    \"tool_name\": \"tool_name\" or null,\n    \"tool_input\": \"the input you need to give to the tool\"\n    \"reasoning\": \"why you need this tool or why you don't need tools\"\n}}\n\nRules:\n- Only use tools when you genuinely need external information\n- If you already know the answer, set needs_tool to false\n- Only select ONE tool at a time<|end|><|start|>assistant", 
+  "final_prompt": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2024-06\nCurrent date: 2026-04-14\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>developer<|message|># Instructions\n\nReasoning: low\n\n<|end|><|start|>user<|message|>In a paragraph, could you tell me what you know about hockey sur glace?<|end|><|start|>assistant", 
+  "response": "Ice hockey, or hockey sur glace in French, is a fast‑paced team sport played on a rectangular sheet of ice, typically 200 feet long and 85 feet wide in North America, with six players per side (a goaltender, two defensemen, and three forwards). The objective is to score more goals than the opponent by shooting a vulcanized rubber puck into the opposing net using curved sticks, while adhering to rules that govern off‑sides, icing, and penalties for infractions such as tripping or high‑sticking. Originating in the late 19th century in Canada, the sport spread internationally and is now governed by the International Ice Hockey Federation (IIHF), which oversees major competitions like the World Championships and the Olympic tournament, while the National Hockey League (NHL) remains the premier professional league, showcasing elite talent, high‑impact physical play, and a passionate fan base worldwide.", 
+  "model": ".../hf_models/openai/gpt-oss-120b", 
+  "tool_calls": [{"type": "tool_selection", 
+                  "decision": {
+                      "needs_tool": false, 
+                      "tool_name": null, 
+                      "tool_input": null, 
+                      "reasoning": "I have sufficient knowledge about ice hockey (hockey sur glace) to provide a concise paragraph without requiring up-to-date external information."
+                      }, 
+                  "raw_response": "analysisThe user asks: \"In a paragraph, could you tell me what you know about hockey sur glace?\" That's French for \"ice hockey\". The assistant likely knows general info about ice hockey. No need for up-to-date info. So no tool needed. Provide JSON with needs_tool false.assistantfinal{\n    \"needs_tool\": false,\n    \"tool_name\": null,\n    \"tool_input\": null,\n    \"reasoning\": \"I have sufficient knowledge about ice hockey (hockey sur glace) to provide a concise paragraph without requiring up-to-date external information.\"\n}"}], 
+  "iterations": 2, 
+  "tokens_generated": 373, 
+  "web_search_enabled": true, 
+  "search_called": false, 
+  "yes_no_decision": null, 
+  "thinking": "analysisUser asks: \"In a paragraph, could you tell me what you know about hockey sur glace?\" That's French for \"ice hockey\". Provide a paragraph about ice hockey. It's allowed. No disallowed content. Provide concise paragraph."}
+
 ```
 
 Scoring summaries are written as CSV files with columns such as `entity`, `query`, `model`, `search_called`, `score`, `correct_claims`, and `total_claims`.
